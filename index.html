@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Internship Project</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td{
+            border: 1pt solid #D8D9DA;
+            padding: 8px;
+            text-align: left;
+            font-size: 12pt;
+        }
+
+        th {
+            background-color: #D6EFED;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-------- <h1> Employees Details</h1>-->
+       <table id="employeeTable">
+        <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Designation</th>
+            <th>Date of Joining</th>
+            <th>Address</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody id="employeeBody">
+        <!--------------Employee details -------------->
+        <tr>
+        <td> Ram </td>
+        <td> Technical Writer</td>
+        <td>01/11/2023</td>
+        <td> G/A main station</td>
+        <td> 60000</td>
+        </tr>
+
+        <tr>
+        <td> Ramu </td>
+        <td> Technical lead</td>
+        <td>01/11/2023</td>
+        <td> Mumbai </td>
+        <td> </td>
+        </tr>
+
+        <tr>
+        <td> yash </td>
+        <td> internship</td>
+        <td>01/11/2023</td>
+        <td> Pune station </td>
+        <td> </td>
+        </tr>
+    
+     
+    </tbody>
+ </table>
+
+ <script>
+    const Employee = [
+        {EmployeeName: 'Ram',Designation:'TechnicalWriter',DateOfJoining:'01-02-2023',Address:'G/A main station',Salary:60000},
+        {EmployeeName: 'Ramu',Designation:'Technical_lead',DateOfJoining:'01-02-2023',Address:'Mumbai',Salary:70000},
+        {EmployeeName: 'Ram',Designation:'TechnicalWriter',DateOfJoining:'01-02-2023',Address:'Pune station',Salary:80000},
+    ];
+
+    function displayEmployee(){
+        const tableBody = document.getElementById('employeeBody');
+        tableBody.innerHTML = '';
+
+        const TechnicalWriters= Employee.filter(Employee => Employee.Designation ==='Technical Writer');
+
+        //filter employee salary
+        const filteredEmployee = Employee.filter(Employee => Employee.salary > 500000 && Employee.salary< 700000);
+        //filtered results
+        const finalEmployees =[...TechnicalWriters, ...filteredEmployee];
+
+        //Display only employee name, designation, and Date of Joining
+        finalEmployees.forEach(Employee => {
+            const row = document.createElement('tr');
+            row.innerHTML = 
+            <td>${Employee.EmployeeName}</td>
+            <td>${Employee.Designation}</td>
+            <td>${Employee.DateOfJoining}</td>
+            ;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Call the function to initially display employees
+    displayEmployee();
+ </script>
+</body>
+</html>
